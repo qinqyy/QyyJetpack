@@ -1,0 +1,179 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+
+        <import type="android.view.View" />
+
+        <variable
+            name="user"
+            type="com.example.qyy.mydatabinding.bean.User" />
+
+        <variable
+            name="event"
+            type="com.example.qyy.mydatabinding.envent.EventClick" />
+
+        <variable
+            name="field"
+            type="com.example.qyy.mydatabinding.bean.FieldObj" />
+
+        <variable
+            name="map"
+            type="android.databinding.ObservableArrayMap&lt;String,Object&gt;" />
+
+        <variable
+            name="imgurl"
+            type="String" />
+
+        <variable
+            name="paddleft"
+            type="Integer" />
+
+        <variable
+            name="time"
+            type="java.util.Date" />
+
+        <variable
+            name="pojo"
+            type="java.util.ArrayList&lt;com.example.qyy.mydatabinding.bean.Pojo.PP.QQ&gt;" />
+
+        <variable
+            name="twoway"
+            type="com.example.qyy.mydatabinding.bean.TwoWayBean" />
+    </data>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        android:padding="5dp"
+        tools:context=".MainActivity">
+
+        <Button
+            android:onClick="onClick"
+            android:id="@+id/btn_viewstub"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="初始化Viewstub" />
+
+        <ViewStub
+            android:id="@+id/vs"
+            android:layout_width="match_parent"
+            android:layout_height="200dp"
+            android:layout="@layout/vs_layout" />
+
+        <include
+            layout="@layout/include_qwt"
+            app:user="@{user}" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:gravity="center_vertical"
+            android:orientation="horizontal">
+
+            <TextView
+                android:id="@+id/tv"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="名字：" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@{user.name}" />
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:orientation="horizontal">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="标签：" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@{user.tip}" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:orientation="horizontal">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="年龄：" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@{String.valueOf(user.age)}" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="20dp"
+                android:text="@{time}"
+                tools:text="时间" />
+        </LinearLayout>
+
+        <Button
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="@{field.isvs ? @color/colorAccent:null}"
+            android:onClick="@{() -> event.onClicktoBinding(user,twoway,context,tv)}"
+            android:text="@{pojo[0].getCc()}" />
+
+        <TextView
+            android:id="@+id/tvtext"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textStyle="bold" />
+
+        <Button
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="10dp"
+            android:background="@{field.isvs ? @drawable/ic_launcher :null}"
+            android:onClick="@{() -> event.onClickImg(field,map,twoway)}"
+            android:paddingLeft="@{paddleft}"
+            android:text="@{@string/app_name,default=`dddddd`}"
+            android:textColor="@{@color/colorAccent}" />
+
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@{@drawable/ic_launcher}"
+            android:visibility="@{field.isvs ? View.VISIBLE :View.GONE}"
+            app:imageUrl="@{imgurl}"
+            tools:src="@mipmap/ic_launcher" />
+
+        <EditText
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="双向绑定"
+            android:text="@={twoway.twoway}" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="5dp"
+            android:text="@{field.bookname}" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text='@{map.one}' />
+    </LinearLayout>
+</layout>

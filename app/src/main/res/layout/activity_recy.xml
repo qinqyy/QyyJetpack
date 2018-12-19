@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:app="http://schemas.android.com/apk/res-auto">
+    <data>
+        <variable
+            name="viewmodel"
+            type="com.example.qyy.mydatabinding.RecyViewModel"/>
+    </data>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context=".RecyActivity">
+<TextView
+    android:onClick="onClick"
+    android:background="@color/colorAccent"
+    android:gravity="center"
+    android:text="魔道祖师"
+    android:layout_width="match_parent"
+    android:layout_height="46dp" />
+    <android.support.v7.widget.RecyclerView
+        android:id="@+id/recyclerview"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:recylist="@{viewmodel.mlist}"
+        />
+</LinearLayout>
+</layout>
