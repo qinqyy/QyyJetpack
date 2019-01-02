@@ -3,6 +3,7 @@ package com.example.qyy.mydatabinding.livedata;
 
 import android.arch.lifecycle.Observer;
 import android.arch.lifecycle.ViewModelProviders;
+import android.databinding.DataBindingUtil;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
@@ -13,6 +14,7 @@ import android.widget.Button;
 import android.widget.TextView;
 
 import com.example.qyy.mydatabinding.R;
+import com.example.qyy.mydatabinding.databinding.FragmentLiveOneBinding;
 
 /**
  * A simple {@link Fragment} subclass.
@@ -44,28 +46,23 @@ public class LiveOneFragment extends Fragment {
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         viewModel = ViewModelProviders.of(getActivity()).get(LiveViewModel.class);
-        viewModel.getMtvStr().observe(this, new Observer<String>() {
-            @Override
-            public void onChanged(@Nullable String s) {
-                mtvStr.setText(s);
-            }
-        });
     }
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        View view = inflater.inflate(R.layout.fragment_live_one, container, false);
-        mbtn = (Button) view.findViewById(R.id.one_btn);
-        mtvStr = (TextView) view.findViewById(R.id.fragment_one_tv);
+        FragmentLiveOneBinding fragmentLiveOneBinding = DataBindingUtil.inflate(inflater, R.layout.fragment_live_one, container, false);
+        fragmentLiveOneBinding.setViewmodel(viewModel);
+        fragmentLiveOneBinding.setLifecycleOwner(this);
+        mbtn = fragmentLiveOneBinding.oneBtn;
         mbtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 viewModel.getMtvStr().setValue("我是重FragmentOne发出的POST，大侠没有眼泪，可是却想要流泪！！！");
             }
         });
-        return view;
+        return fragmentLiveOneBinding.getRoot();
     }
 
 }

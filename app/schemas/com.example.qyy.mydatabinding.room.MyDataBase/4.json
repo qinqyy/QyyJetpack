@@ -1,0 +1,95 @@
+{
+  "formatVersion": 1,
+  "database": {
+    "version": 4,
+    "identityHash": "582a7f267e146f5875d7e8765645db8a",
+    "entities": [
+      {
+        "tableName": "qyy",
+        "createSql": "CREATE TABLE IF NOT EXISTS `${TABLE_NAME}` (`one_name` TEXT, `age` TEXT, `pub_year` TEXT, `two` TEXT, `keyid` INTEGER PRIMARY KEY AUTOINCREMENT, `city` TEXT, `post_code` INTEGER)",
+        "fields": [
+          {
+            "fieldPath": "name",
+            "columnName": "one_name",
+            "affinity": "TEXT",
+            "notNull": false
+          },
+          {
+            "fieldPath": "age",
+            "columnName": "age",
+            "affinity": "TEXT",
+            "notNull": false
+          },
+          {
+            "fieldPath": "pub_year",
+            "columnName": "pub_year",
+            "affinity": "TEXT",
+            "notNull": false
+          },
+          {
+            "fieldPath": "two",
+            "columnName": "two",
+            "affinity": "TEXT",
+            "notNull": false
+          },
+          {
+            "fieldPath": "keyid",
+            "columnName": "keyid",
+            "affinity": "INTEGER",
+            "notNull": false
+          },
+          {
+            "fieldPath": "address.city",
+            "columnName": "city",
+            "affinity": "TEXT",
+            "notNull": false
+          },
+          {
+            "fieldPath": "address.postCode",
+            "columnName": "post_code",
+            "affinity": "INTEGER",
+            "notNull": false
+          }
+        ],
+        "primaryKey": {
+          "columnNames": [
+            "keyid"
+          ],
+          "autoGenerate": true
+        },
+        "indices": [],
+        "foreignKeys": []
+      },
+      {
+        "tableName": "Fruit",
+        "createSql": "CREATE TABLE IF NOT EXISTS `${TABLE_NAME}` (`fruitid` INTEGER, `name` TEXT, PRIMARY KEY(`fruitid`))",
+        "fields": [
+          {
+            "fieldPath": "fruitid",
+            "columnName": "fruitid",
+            "affinity": "INTEGER",
+            "notNull": false
+          },
+          {
+            "fieldPath": "name",
+            "columnName": "name",
+            "affinity": "TEXT",
+            "notNull": false
+          }
+        ],
+        "primaryKey": {
+          "columnNames": [
+            "fruitid"
+          ],
+          "autoGenerate": false
+        },
+        "indices": [],
+        "foreignKeys": []
+      }
+    ],
+    "setupQueries": [
+      "CREATE TABLE IF NOT EXISTS room_master_table (id INTEGER PRIMARY KEY,identity_hash TEXT)",
+      "INSERT OR REPLACE INTO room_master_table (id,identity_hash) VALUES(42, \"582a7f267e146f5875d7e8765645db8a\")"
+    ]
+  }
+}

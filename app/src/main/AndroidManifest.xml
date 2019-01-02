@@ -5,6 +5,7 @@
     <uses-permission android:name="android.permission.INTERNET" />
 
     <application
+        android:name=".MyApplication"
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
         android:label="@string/app_name"
@@ -15,16 +16,18 @@
         <activity android:name=".VsActivity" />
         <activity android:name=".RecyActivity" />
         <activity android:name=".LifecyclesActivity" />
-        <activity android:name=".livedata.LiveDataActivity" />
-        <activity android:name=".livedata.transformation.MapActivity" />
-        <activity android:name=".livedata.transformation.SwitchMapActivity" />
-        <activity android:name=".livedata.mediator.MediatorActivity"></activity>
-        <activity android:name=".viewmodel.ViewModelActivity">
+        <activity android:name=".livedata.LiveDataActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
+        </activity>
+        <activity android:name=".livedata.transformation.MapActivity" />
+        <activity android:name=".livedata.transformation.SwitchMapActivity" />
+        <activity android:name=".livedata.mediator.MediatorActivity"></activity>
+        <activity android:name=".viewmodel.ViewModelActivity">
+
         </activity>
         <activity android:name=".room.RoomActivity"></activity>
     </application>

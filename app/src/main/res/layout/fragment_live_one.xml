@@ -1,4 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
+<layout>
+    <data>
+        <variable
+            name="viewmodel"
+            type="com.example.qyy.mydatabinding.livedata.LiveViewModel"/>
+    </data>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
@@ -6,18 +12,16 @@
     android:orientation="vertical"
     android:padding="10dp"
     tools:context=".livedata.LiveOneFragment">
-<TextView
-    android:text="时代很潦草，不太关心了！！"
-    android:layout_width="wrap_content"
-    android:layout_height="wrap_content" />
 <Button
     android:id="@+id/one_btn"
     android:text="FragmentOnePost"
     android:layout_width="wrap_content"
     android:layout_height="wrap_content" />
 <TextView
+    android:text="@{viewmodel.mtvStr}"
     android:id="@+id/fragment_one_tv"
     android:layout_marginTop="15dp"
     android:layout_width="wrap_content"
     android:layout_height="wrap_content" />
 </LinearLayout>
+</layout>
