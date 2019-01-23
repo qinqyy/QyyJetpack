@@ -16,20 +16,27 @@
         <activity android:name=".VsActivity" />
         <activity android:name=".RecyActivity" />
         <activity android:name=".LifecyclesActivity" />
-        <activity android:name=".livedata.LiveDataActivity">
+        <activity android:name=".livedata.LiveDataActivity" />
+        <activity android:name=".livedata.transformation.MapActivity" />
+        <activity android:name=".livedata.transformation.SwitchMapActivity" />
+        <activity android:name=".livedata.mediator.MediatorActivity" />
+        <activity android:name=".viewmodel.ViewModelActivity" />
+        <activity android:name=".room.RoomActivity" >
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".livedata.transformation.MapActivity" />
-        <activity android:name=".livedata.transformation.SwitchMapActivity" />
-        <activity android:name=".livedata.mediator.MediatorActivity"></activity>
-        <activity android:name=".viewmodel.ViewModelActivity">
+        <activity android:name=".navigation.NavActivity"></activity>
+        <activity
+            android:name=".navigation.NaviBottomActivity"
+            android:label="@string/title_activity_navi_bottom">
 
         </activity>
-        <activity android:name=".room.RoomActivity"></activity>
+        <activity android:name=".paging.PagingActivity">
+
+        </activity>
     </application>
 
 </manifest>

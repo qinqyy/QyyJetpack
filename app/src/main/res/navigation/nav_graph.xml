@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/nav_graph"
+    app:startDestination="@id/navFragmentOne">
+
+    <fragment
+        android:id="@+id/navFragmentOne"
+        android:name="com.example.qyy.mydatabinding.navigation.NavFragmentOne"
+        android:label="fragment_nav_fragment_one"
+        tools:layout="@layout/fragment_nav_fragment_one" >
+        <action
+            android:id="@+id/action_navFragmentOne_to_navFragmentTwo"
+            app:destination="@id/navFragmentTwo" app:enterAnim="@anim/nav_default_enter_anim" app:exitAnim="@anim/nav_default_exit_anim" app:popEnterAnim="@anim/nav_default_pop_enter_anim" app:popExitAnim="@anim/nav_default_pop_exit_anim" />
+    </fragment>
+    <fragment
+        android:id="@+id/navFragmentTwo"
+        android:name="com.example.qyy.mydatabinding.navigation.NavFragmentTwo"
+        android:label="fragment_nav_fragment_two"
+        tools:layout="@layout/fragment_nav_fragment_two" >
+        <action
+            android:id="@+id/action_navFragmentTwo_to_navFragmentThree"
+            app:destination="@id/navFragmentThree" app:enterAnim="@anim/nav_default_enter_anim" app:exitAnim="@anim/nav_default_exit_anim" app:popEnterAnim="@anim/nav_default_pop_enter_anim" app:popExitAnim="@anim/nav_default_pop_exit_anim" />
+    </fragment>
+    <fragment
+        android:id="@+id/navFragmentThree"
+        android:name="com.example.qyy.mydatabinding.navigation.NavFragmentThree"
+        android:label="fragment_nav_fragment_three"
+        tools:layout="@layout/fragment_nav_fragment_three" >
+        <action
+            android:id="@+id/action_navFragmentThree_to_navActivity"
+            app:destination="@id/navActivity" />
+    </fragment>
+    <activity
+        android:id="@+id/navActivity"
+        android:name="com.example.qyy.mydatabinding.navigation.NavActivity"
+        android:label="activity_nav"
+        tools:layout="@layout/activity_nav" />
+</navigation>

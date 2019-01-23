@@ -1,4 +1,4 @@
-package com.example.qyy.mydatabinding.setters;
+package com.example.qyy.mydatabinding.bindingsetters;
 
 import android.databinding.BindingAdapter;
 import android.databinding.BindingConversion;
