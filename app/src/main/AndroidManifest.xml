@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
     package="com.example.qyy.mydatabinding">
 
     <uses-permission android:name="android.permission.INTERNET" />
@@ -21,21 +22,17 @@
         <activity android:name=".livedata.transformation.SwitchMapActivity" />
         <activity android:name=".livedata.mediator.MediatorActivity" />
         <activity android:name=".viewmodel.ViewModelActivity" />
-        <activity android:name=".room.RoomActivity" >
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
-
-                <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>
-        </activity>
-        <activity android:name=".navigation.NavActivity"></activity>
+        <activity android:name=".room.RoomActivity" />
+        <activity android:name=".navigation.NavActivity"/>
         <activity
             android:name=".navigation.NaviBottomActivity"
-            android:label="@string/title_activity_navi_bottom">
-
-        </activity>
+            android:label="@string/title_activity_navi_bottom"/>
         <activity android:name=".paging.PagingActivity">
-
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+                <action android:name="android.intent.action.VIEW" />
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
         </activity>
     </application>
 

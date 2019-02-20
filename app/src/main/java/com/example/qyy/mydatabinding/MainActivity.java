@@ -4,28 +4,34 @@ import android.databinding.DataBindingUtil;
 import android.databinding.ObservableArrayMap;
 import android.databinding.OnRebindCallback;
 import android.databinding.ViewDataBinding;
+import android.graphics.drawable.ColorDrawable;
 import android.os.Build;
 import android.support.annotation.RequiresApi;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.support.v7.widget.LinearLayoutManager;
+import android.support.v7.widget.RecyclerView;
 import android.transition.TransitionManager;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.view.ViewStub;
+import android.widget.PopupWindow;
 
 import com.example.qyy.mydatabinding.bean.FieldObj;
 import com.example.qyy.mydatabinding.bean.Pojo;
 import com.example.qyy.mydatabinding.bean.TwoWayBean;
 import com.example.qyy.mydatabinding.bean.User;
 import com.example.qyy.mydatabinding.databinding.ActivityMainBinding;
+import com.example.qyy.mydatabinding.databinding.PopCkidBinding;
 import com.example.qyy.mydatabinding.databinding.VsLayoutBinding;
 import com.example.qyy.mydatabinding.envent.EventClick;
 
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
+import java.util.List;
 
 public class MainActivity extends AppCompatActivity implements View.OnClickListener {
     User user;
@@ -33,6 +39,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     private TwoWayBean twoWayBean;
     private ArrayList<Pojo.PP.QQ> mpps = new ArrayList<>();
     private ActivityMainBinding mainBinding;
+    private PopupWindow mPopupWindow;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -73,8 +80,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         mainBinding.setTwoway(twoWayBean);
         String na = stampToDate("1537248385000");
         Log.v("ssss", "" + na);
-
-
+        initPopuWindow();
     }
 
 
@@ -102,5 +108,45 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
             }
         });
         mainBinding.vs.getViewStub().inflate();
+        mPopupWindow.showAsDropDown(v);
     }
+
+    private void initPopuWindow() {
+        View view = LayoutInflater.from(this).inflate(R.layout.pop_ckid, null);
+        PopCkidBinding popCkidBinding = DataBindingUtil.inflate(LayoutInflater.from(this), R.layout.pop_ckid, null, false);
+//        RecyclerView llrey = (RecyclerView) view.findViewById(R.id.llrey);
+        popCkidBinding.llrey.setLayoutManager(new LinearLayoutManager(this));
+        final List<String> listpp = new ArrayList<>();
+        for (int i = 0; i < 10; i++) {
+            listpp.add("bbbbbbnum:" + i);
+        }
+        popCkidBinding.llrey.setAdapter(new RecyclerBaseAdapter<String, PopItme>(listpp, this) {
+            @Override
+            public int getTypeLayoutId(int position) {
+                return R.layout.itme_pop;
+
+            }
+
+            @Override
+            public PopItme getItmeViewModel(MyViewHodler viewHodler, int position) {
+                return new PopItme(listpp.get(position));
+            }
+
+        });
+        mPopupWindow = new PopupWindow(this);
+        mPopupWindow.setWidth(ViewGroup.LayoutParams.WRAP_CONTENT);
+        mPopupWindow.setHeight(ViewGroup.LayoutParams.WRAP_CONTENT);
+        mPopupWindow.setContentView(popCkidBinding.getRoot());
+        mPopupWindow.setBackgroundDrawable(new ColorDrawable(0x00000000));
+        mPopupWindow.setFocusable(true);
+        mPopupWindow.setOutsideTouchable(true);
+        mPopupWindow.setOnDismissListener(new PopupWindow.OnDismissListener() {
+            @Override
+            public void onDismiss() {
+
+            }
+        });
+
+    }
+
 }
