@@ -53,4 +53,8 @@ dependencies {
     //paging
     implementation "android.arch.paging:runtime:1.0.1"
     testImplementation "android.arch.paging:common:1.0.1"
+    //workmanager
+    implementation "android.arch.work:work-runtime:1.0.0-rc01"
+    // optional - Test helpers
+    androidTestImplementation "android.arch.work:work-testing:1.0.0-rc01"
 }

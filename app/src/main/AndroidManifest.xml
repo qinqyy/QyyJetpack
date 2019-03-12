@@ -13,6 +13,16 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
+        <activity android:name=".livedata.extend.ExtendTwoActivity"></activity>
+        <activity android:name=".livedata.extend.ExtendActivity">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+                <action android:name="android.intent.action.VIEW" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+        <activity android:name=".workmanager.WorkActivity"></activity>
         <activity android:name=".MainActivity" />
         <activity android:name=".VsActivity" />
         <activity android:name=".RecyActivity" />
@@ -23,17 +33,11 @@
         <activity android:name=".livedata.mediator.MediatorActivity" />
         <activity android:name=".viewmodel.ViewModelActivity" />
         <activity android:name=".room.RoomActivity" />
-        <activity android:name=".navigation.NavActivity"/>
+        <activity android:name=".navigation.NavActivity" />
         <activity
             android:name=".navigation.NaviBottomActivity"
-            android:label="@string/title_activity_navi_bottom"/>
-        <activity android:name=".paging.PagingActivity">
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
-                <action android:name="android.intent.action.VIEW" />
-                <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>
-        </activity>
+            android:label="@string/title_activity_navi_bottom" />
+        <activity android:name=".paging.PagingActivity" />
     </application>
 
 </manifest>
